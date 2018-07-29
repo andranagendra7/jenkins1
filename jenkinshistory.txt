@@ -87,3 +87,5 @@ export JENKINS_HOME=/home/jenkins
 export PATH
 
 --------------------------------------------------------------------------------
+vi /etc/sysconfig/jenkins
+
