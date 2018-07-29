@@ -1,0 +1,89 @@
+https://aws.amazon.com/amazon-linux-ami/2018.03-release-notes/
+[ec2-user@ip-172-31-88-67 ~]$ sudo -i
+[root@ip-172-31-88-67 ~]# /etc/init.d/jenkins status
+jenkins (pid  2569) is running...
+[root@ip-172-31-88-67 ~]# vi /etc/sysconfig/jenkins
+[root@ip-172-31-88-67 ~]# /etc/init.d/jenkins stop
+Shutting down Jenkins                                      [  OK  ]
+[root@ip-172-31-88-67 ~]# vi /etc/sysconfig/jenkins
+[root@ip-172-31-88-67 ~]# vi ~/.bash_profile
+[root@ip-172-31-88-67 ~]# vi /etc/default/jenkins
+[root@ip-172-31-88-67 ~]# /etc/init.d/jenkins start
+Starting Jenkins                                           [  OK  ]
+[root@ip-172-31-88-67 ~]# /etc/init.d/jenkins stop
+Shutting down Jenkins                                      [  OK  ]
+[root@ip-172-31-88-67 ~]# sudo mv /var/lib/jenkins /home
+[root@ip-172-31-88-67 ~]# sudo ln -s /home/jenkins /var/lib/jenkins
+[root@ip-172-31-88-67 ~]# vi /etc/sysconfig/jenkins
+[root@ip-172-31-88-67 ~]# vi /etc/default/jenkins
+[root@ip-172-31-88-67 ~]# vi ~/.bash_profile
+[root@ip-172-31-88-67 ~]# vi /etc/passwd
+[root@ip-172-31-88-67 ~]# service jenkins start
+Starting Jenkins                                           [  OK  ]
+[root@ip-172-31-88-67 ~]# cat home/secrets/initialAdminPassword
+a984a62b2eb24836975b0dcfa6532cb7
+[root@ip-172-31-88-67 ~]#
+
+login as: ec2-user
+Authenticating with public key "imported-openssh-key"
+Last login: Sat Jul 28 01:05:11 2018 from 106.208.140.209
+
+       __|  __|_  )
+       _|  (     /   Amazon Linux AMI
+      ___|\___|___|
+
+https://aws.amazon.com/amazon-linux-ami/2018.03-release-notes/
+[ec2-user@ip-172-31-88-67 ~]$ sudo -i
+[root@ip-172-31-88-67 ~]# /etc/init.d/jenkins status
+jenkins (pid  2569) is running...
+[root@ip-172-31-88-67 ~]# vi /etc/sysconfig/jenkins
+[root@ip-172-31-88-67 ~]# /etc/init.d/jenkins stop
+Shutting down Jenkins                                      [  OK  ]
+[root@ip-172-31-88-67 ~]# vi /etc/sysconfig/jenkins
+[root@ip-172-31-88-67 ~]# vi ~/.bash_profile
+[root@ip-172-31-88-67 ~]# vi /etc/default/jenkins
+[root@ip-172-31-88-67 ~]# /etc/init.d/jenkins start
+Starting Jenkins                                           [  OK  ]
+[root@ip-172-31-88-67 ~]# /etc/init.d/jenkins stop
+Shutting down Jenkins                                      [  OK  ]
+[root@ip-172-31-88-67 ~]# sudo mv /var/lib/jenkins /home
+[root@ip-172-31-88-67 ~]# sudo ln -s /home/jenkins /var/lib/jenkins
+[root@ip-172-31-88-67 ~]# vi /etc/sysconfig/jenkins
+[root@ip-172-31-88-67 ~]# vi /etc/default/jenkins
+[root@ip-172-31-88-67 ~]# vi ~/.bash_profile
+[root@ip-172-31-88-67 ~]# vi /etc/passwd
+[root@ip-172-31-88-67 ~]# service jenkins start
+Starting Jenkins                                           [  OK  ]
+[root@ip-172-31-88-67 ~]# cat home/secrets/initialAdminPassword
+a984a62b2eb24836975b0dcfa6532cb7
+[root@ip-172-31-88-67 ~]#
+login as: ec2-user
+Authenticating with public key "imported-openssh-key"
+Last login: Sun Jul 29 03:03:59 2018 from 106.208.28.128
+
+       __|  __|_  )
+       _|  (     /   Amazon Linux AMI
+      ___|\___|___|
+
+https://aws.amazon.com/amazon-linux-ami/2018.03-release-notes/
+[ec2-user@ip-172-31-88-67 ~]$ sudo -i
+[root@ip-172-31-88-67 ~]# ls
+chef  chefdk-1.4.3-1.el7.x86_64.rpm  chef-starter.zip  home  jenkins  positive  python  python.pem  shellscript
+[root@ip-172-31-88-67 ~]# vi /etc/default/jenkins
+[root@ip-172-31-88-67 ~]# cat  /etc/default/jenkins
+export JENKINS_HOME=/home/jenkins
+[root@ip-172-31-88-67 ~]# cat ~/.bash_profile
+# .bash_profile
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+        . ~/.bashrc
+fi
+
+# User specific environment and startup programs
+
+PATH=$PATH:$HOME/bin
+export JENKINS_HOME=/home/jenkins
+export PATH
+
+--------------------------------------------------------------------------------

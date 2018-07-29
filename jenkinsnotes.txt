@@ -1,0 +1,50 @@
+) Change the jenkins user's home directory
+
+sudo su -
+service jenkins stop
+vi /etc/passwd
+#  change the /var/lib/jenkins to /home/jenkins or whatever 
+2) Change the setting in the start script to also find it
+
+vi /etc/sysconfig/jenkins
+#   change the JENKINS_HOME to /home/jenkins or what ever
+3) Copy all the data to the new location (eg: /home/jenkins)
+
+cd /home
+cp -Rf /var/lib/jenkins .
+chown -R jenkins:jenkins *
+4) Start it back up
+
+service jenkins start
+
+
+Stop Jenkins 
+/etc/init.d/jenkins stop
+
+Create folder for new Jenkins home directory
+mkdir home
+
+Change access rights for this folder and all folders and files inside
+sudo chown -R jenkins:jenkins home
+
+Find current Jenkins folder and copy all directories and files into new one. If you don't know current Jenkins directory you can find it in /etc/default/jenkins file.
+sudo -u jenkins cp -r /var/lib/jenkins/* home/
+
+Change JENNIKS_HOME inside /etc/default/jenkins
+sudo nano /etc/default/jenkins
+
+find JENKINS_HOME and change path to new Jenkins home folder
+
+Start Jenkins 
+/etc/init.d/jenkins start 
+
+In case if you have the error message 
+Unable to create the home directory ‘/path/to/jenkins/home’. This is most likely a permission problem.
+run the command
+sudo chown -R jenkins:jenkins root_folder/
+
+To get the root_folder you need go to Jenkins home folder and run pwd. This will work in case if you want use other one hdd (not system) for Jenkins home .
+$pwd
+/media/path/to/jenkins/home
+
+In my case the root_folder is media

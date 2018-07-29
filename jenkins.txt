@@ -1,0 +1,6 @@
+jenkins :
+
+vi /etc/sysconfig/jenkins
+
+
+JENKINS_HOME="/home/ec2-user/jenkins"

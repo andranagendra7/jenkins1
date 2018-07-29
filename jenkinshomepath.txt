@@ -1,0 +1,93 @@
+Jenkins:
+-------
+
+To change jenkins home directory:
+--------------------------------
+step 1: first we stop the jenkins service
+
+/etc/init.d/jenkins stop (or) sudo service jenkins stop
+
+step 2: we create a new directory in home path location
+
+mkdir [new jenkins_home directory_name]
+
+step 3: now we move files from old path to new path
+sudo mv /var/lib/jenkins /home
+
+step 4: now we crate the soft link
+
+sudo ln -s /home/jenkins /var/lib/jenkins
+
+step 5: now we change jenkins_home path bellow file
+
+vi /etc/sysconfig/jenkins
+
+jenkin_home = 'new jenkins_home directory'
+
+step 6: now change bellow location
+
+vi /etc/passwd
+
+#jenkins:x:498:497:Jenkins Automation Server:/var/lib/jenkins:/bin/false --> old path user permisions
+jenkins:x:498:497:Jenkins Automation Server:/home/jenkins:/bin/false    --> new path user permisions
+
+step 7: now we start the jenkins  service
+
+NOTE: Now we start jenkins bellow methods
+
+
+sudo service jenkins start
+sudo service jenkins stop 
+sudo service jenkins restart
+
+Redhat 7 or ubuntu xiena(16.04 above): 
+-------------------------------------
+sudo systemctl jenkins status
+sudo systemctl jenkins start
+sudo systemctl jenkins stop
+sudo systemctl jenkins restart
+
+sudo /etc/init.d/jenkins start
+sudo /etc/init.d/jenkins restart
+sudo /etc/init.d/jenkins stop
+sudo /etc/init.d/jenkins status
+
+TO SET THE jenkin_home environment  permanent  Variable:
+
+# vi /etc/default/jenkins
+
+export JENKINS_HOME=/home/jenkins
+:wq!
+
+method 2:
+--------
+
+vi ~/.base_profile
+
+export JENKINS_HOME=/home/jenkins
+ 
+:wq!
+) Change the jenkins user's home directory
+
+sudo su -
+service jenkins stop
+vi /etc/passwd
+#  change the /var/lib/jenkins to /home/jenkins or whatever 
+2) Change the setting in the start script to also find it
+
+vi /etc/sysconfig/jenkins
+#   change the JENKINS_HOME to /home/jenkins or what ever
+3) Copy all the data to the new location (eg: /home/jenkins)
+
+cd /home
+cp -Rf /var/lib/jenkins .
+chown -R jenkins:jenkins *
+4) Start it back up
+
+service jenkins start
+---------------------------------------------------------------------------------------------------------------------------------------------------
+Linux commands:
+---------------
+
+sudo service iptables stop  -->To stop the firewall
+
